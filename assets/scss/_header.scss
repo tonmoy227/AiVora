@@ -1,0 +1,138 @@
+.av-header-section {
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+	position: absolute;
+	.navbar-nav {
+		flex-direction: row;
+	}
+	.av-mobile-menu-btn {
+		display: none;
+		@media #{$md,$sm,$xs,$xxs} {
+			display: block;
+		}
+		button {
+			padding: 0;
+			width: 30px;
+			height: 18px;
+			border: none;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background-color: transparent;
+			justify-content: space-between;
+			span {
+				width: 19px;
+				height: 2px;
+				display: block;
+				background-color: #fff;
+				&:nth-child(even) {
+					width: 29px;
+				}
+			}
+		}
+	}
+	&:is(.header_style_one) {
+		top: 24px;
+		padding: 0px 15px;
+		.av-header-content {
+			margin: 0 auto;
+			max-width: 1760px;
+			padding: 24px 32px;
+			border-radius: 24px;
+			background-color: #1F1F1F;
+			@media #{$xl} {
+				padding: 24px 20px;
+			}
+			@media #{$xs,$xxs} {
+				padding: 18px 10px;
+			}
+			.brand-logo {
+				@media #{$xs,$xxs} {
+					max-width: 130px;
+				}
+			}
+		}
+		.main-navigation {
+			padding: 12px 16px;
+			border-radius: 100px;
+			background-color: var(--av-black1);
+			@media #{$md,$sm,$xs,$xxs} {
+				display: none;
+			}
+			li {
+				margin: 0px 10px;
+				font-size: 16px;
+				text-transform: uppercase;
+				@media #{$xl,$lg} {
+					margin: 0px 5px;
+				}
+				a {
+					z-index: 1;
+					font-size: 16px;
+					color: #C6C7C8;
+					padding: 8px 15px;
+					border-radius: 20px;
+					position: relative;
+					@media #{$xl,$lg} {
+						padding: 5px 10px;
+					}
+					&:before {
+						top: 0;
+						right: 0;
+						left: auto;
+						z-index: -1;
+						width: 0%;
+						content: '';
+						height: 100%;
+						position: absolute;
+						border-radius: 20px;
+						background-color: #fff;
+						transition: all 500ms ease-in-out;
+					}
+				}
+				&:is(.active),
+				&:hover {
+					a {
+						color: var(--av-black1);
+						&:before {
+							left: 0;
+							width: 100%;
+							right: auto;
+						}
+					}
+				}
+			}
+		}
+		.av-header-action {
+			gap: 12px;
+			.search-btn {
+				padding: 0;
+				color: #fff;
+				width: 40px;
+				border: none;
+				height: 40px;
+				font-size: 20px;
+				background-color: transparent;
+			}
+			.av-btn1 {
+				@media #{$lg,$md,$sm,$xs,$xxs} {
+					display: none;
+				}
+			}
+			.offcanvas-trigger {
+				@media #{$md,$sm,$xs,$xxs} {
+					display: none;
+				}
+				button {
+					width: 60px;
+					height: 60px;
+					border-radius: 100%;
+					border: 1px solid  #4e4646;
+					background-color: transparent;
+				}
+			}
+		}
+	}
+}

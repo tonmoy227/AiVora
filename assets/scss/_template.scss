@@ -1,0 +1,39 @@
+/*=========
+Font load
+===========*/
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Sora:wght@100..800&display=swap');
+:root {
+	--av-body-color: #E0E2E6;
+	--av-title-color: #C6C7C8;
+	--av-sora: "Sora", sans-serif;
+	--av-instru: "Instrument Sans", sans-serif;
+	--av-c1: #7755FF;
+	--av-c2: #6371F2;
+	--av-c3: #40A4DA;
+	--av-c4: #34AED2;
+	--av-c5: #1BC4BF;
+	--av-c6: #0DCFB3;
+	--av-black1: #1A1A1A;
+	--av-prime-c1: linear-gradient(90deg, var(--av-c1) 0%, var(--av-c2) 19.89%, var(--av-c3) 39.62%, var(--av-c4) 60.11%, var(--av-c5) 79.67%, var(--av-c6) 100%);
+	--cube-1: cubic-bezier(0.55, 0.085, 0, 0.99);
+	--cube-2: all .25s cubic-bezier(.645,.045,.355,1);
+	--cube-3: cubic-bezier(0.25, 1, 0.5, 1);
+}
+%gradient-text {
+	background: var(--av-prime-c1);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+// Responsive Variables
+$over:'(min-width: 1800px)';
+$xxxl: 'only screen and (min-width: 1600px) and (max-width: 1799px)';
+$xxl: 'only screen and (min-width: 1400px) and (max-width: 1599px)';
+$xl: 'only screen and (min-width: 1200px) and (max-width: 1399px)';
+$lg: 'only screen and (min-width: 992px) and (max-width: 1199px)';
+$md:'only screen and (min-width: 768px) and (max-width: 991px)';
+$sm: 'only screen and (min-width: 576px) and (max-width: 767px)';
+$xs:'only screen and (min-width: 481px) and (max-width: 575px)';
+$xxs:'(max-width: 480px)';
+$xxxs:'(max-width: 360px)';
