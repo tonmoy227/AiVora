@@ -84,6 +84,26 @@ Last change:    00/00/00
 	$('[data-background]').each(function() {
 		$(this).css('background-image', 'url('+ $(this).attr('data-background') + ')');
 	});
+
+	$('.marquee-left').marquee({
+		gap: 0,
+		speed: 40,
+		delayBeforeStart: 0,
+		direction: 'left',
+		duplicated: true,
+		pauseOnHover: true,
+		startVisible:true,
+	});
+	$('.marquee-right').marquee({
+		gap: 28,
+		speed: 40,
+		delayBeforeStart: 0,
+		direction: 'right',
+		duplicated: true,
+		pauseOnHover: true,
+		startVisible:true,
+	});
+	
 	gsap.registerPlugin(ScrollTrigger);
 	
 	// Animation
@@ -122,13 +142,70 @@ Last change:    00/00/00
 
 			}
 			setTimeout(function() {
-				
+				if ($('.av-hero1-slider').length > 0 ) {
+					var slider = new Swiper('.av-hero1-slider', {
+						spaceBetween: 0,
+						slidesPerView: 1,
+						loop: true,
+						speed: 1000,
+						effect: "fade",
+						autoplay: {
+							enabled: true,
+							delay: 6000
+						},
+						pagination: {
+							el: ".av-hr1-pagi",
+							clickable: true,
+						},
+
+					});
+				};
 			}, 700);
 		})		
 	});
 	
 
-
+	if ($('.av-spon1-slider').length > 0 ) {
+		var slider = new Swiper('.av-spon1-slider', {
+			spaceBetween: 72,
+			slidesPerView: 6,
+			loop: true,
+			autoplay: {
+				enabled: true,
+				delay: 6000
+			},
+			speed: 400,
+			breakpoints: {
+				'1600': {
+					slidesPerView: 6,
+				},
+				'1200': {
+					slidesPerView: 5,
+					spaceBetween: 40,
+				},
+				'992': {
+					slidesPerView: 4,
+					spaceBetween: 20,
+				},
+				'768': {
+					slidesPerView: 4,
+					spaceBetween: 20,
+				},
+				'576': {
+					slidesPerView: 3,
+					spaceBetween: 20,
+				},
+				'480': {
+					slidesPerView: 2,
+					spaceBetween: 20,
+				},
+				'0': {
+					slidesPerView: 2,
+					spaceBetween: 20,
+				},
+			},
+		});
+	};
 
 
 })(jQuery);

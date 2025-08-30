@@ -1,0 +1,28 @@
+.at-text-scrol1-bg {
+	background-color: #F0F2F4;
+	.at-text-scrol1 {
+		h2 {
+			color: var(--av-black1);
+		}
+	}
+}
+.at-text-scrol2-bg {
+	transform: rotate(-4deg);
+	background-image: var(--av-prime-c1);
+}
+.at-text-scrol1 {
+	padding: 34px 0px 32px;
+	@media #{$lg,$md,$sm,$xs,$xxs} {
+		padding: 25px 0px;
+	}
+	h2 {
+		color: #fff;
+		font-size: 60px;
+		margin: 0px 15px;
+		display: inline-block;
+		text-transform: uppercase;
+		@media #{$lg,$md,$sm,$xs,$xxs} {
+			font-size: 30px;
+		}
+	}
+}

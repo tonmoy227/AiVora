@@ -1,0 +1,46 @@
+.av-ab1-content {
+	gap: 90px;
+	padding-right: 15px;
+	margin-left: -165px;
+	@media #{$lg} {
+		gap: 50px;
+	}
+	@media #{$md,$sm,$xs,$xxs} {
+		gap: 20px 40px;
+		flex-wrap: wrap;
+		margin-left: 0;
+		padding-left: 15px;
+	}
+	.ab1-title {
+		font-size: 90px;
+		max-width: 1140px;
+		@media #{$xl} {
+			font-size: 70px;
+		}
+		@media #{$lg} {
+			font-size: 60px;
+		}
+		@media #{$md,$sm,$xs,$xxs} {
+			font-size: 55px;
+		}
+		@media #{$xs} {
+			font-size: 45px;
+		}
+		@media #{$xxs} {
+			font-size: 36px;
+		}
+	}
+}
+.av-spon1-slider {
+	margin: 0 auto;
+	max-width: 1710px;
+	padding: 0px 15px;
+}
+.av-spon1-item {
+	.item-img {
+		height: 48px;
+		img {
+			filter: grayscale(100%);
+		}
+	}
+}
