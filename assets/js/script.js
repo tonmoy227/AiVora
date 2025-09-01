@@ -127,7 +127,57 @@ Last change:    00/00/00
 		preloader: false,
 		fixedContentPos: false,
 	});
-
+	if($('.tx-split-text').length) {
+		var st = jQuery(".tx-split-text");
+		if(st.length == 0) return;
+		gsap.registerPlugin(SplitText);
+		st.each(function(index, el) {
+			el.split = new SplitText(el, { 
+				type: "lines",
+				linesClass: "split-line"
+			});
+			gsap.set(el, { perspective: 400 });
+			if( jQuery(el).hasClass('split-in-up') ){
+				gsap.set(el.split.lines, {
+					opacity: 0,
+					y: 50,
+					rotateX: "50deg",
+					ease: "back.out",
+					transformOrigin: "50% 0%"
+				});
+			}
+			el.anim = gsap.to(el.split.lines, {
+				scrollTrigger: {
+					trigger: el,
+					start: "top 90%",
+				},
+				x: "0",
+				y: "0",
+				rotateX: "0",
+				yPercent: 0,
+				rotationX: "0",
+				color: 'inherit',
+				webkitTextStroke: "0px white",
+				scale: 1,
+				opacity: 1,
+				duration: .5, 
+				stagger: 0.3,
+			});
+		});
+	};
+	if($('.av-slider-title').length) {
+		var txtSplit = $('.av-slider-title');
+		if(txtSplit.length == 0) return; gsap.registerPlugin(SplitText); txtSplit.each(function(index, el) {
+			el.split = new SplitText(el, { 
+				type: "lines",
+				linesClass: "split-line"
+			});
+		});
+	}
+	$('.counter').counterUp({
+		delay: 20,
+		time: 5000
+	});
 	// windows-loaded-before-functions
 	document.addEventListener("DOMContentLoaded", function () {
 		window.addEventListener('load', function(){
@@ -141,6 +191,7 @@ Last change:    00/00/00
 				}, 1000 ) ;
 
 			}
+
 			setTimeout(function() {
 				if ($('.av-hero1-slider').length > 0 ) {
 					var slider = new Swiper('.av-hero1-slider', {
@@ -160,6 +211,12 @@ Last change:    00/00/00
 
 					});
 				};
+
+				const AIHERO1 = gsap.timeline();
+				AIHERO1
+				.from(".av-hero1-client", { opacity:0, rotate: 0,  scale: 1.5, duration: 1, transformOrigin: "center",  ease: "power1.out" })
+				.from(".av-hr1-count-item", { opacity:0, rotate: 0,  scale: 1.5, duration: 1, transformOrigin: "center",  ease: "power1.out" },"< ")
+				
 			}, 700);
 		})		
 	});
@@ -207,5 +264,108 @@ Last change:    00/00/00
 		});
 	};
 
+	$('.av-item-active').each(function () {
+		var $wrap = $(this);
+		var $items = $wrap.find('.av-feat1-wrap');
 
+		$items.on('mouseover', function () {
+			$items.removeClass('active');
+			$(this).addClass('active');
+		});
+	});
+
+	if (window.matchMedia("(min-width: 992px)").matches) {
+		let proSroll = gsap.timeline();
+		let otherSections_2 = document.querySelectorAll('.av-pro1-item')
+		otherSections_2.forEach((section, index, i) => {
+			gsap.set(otherSections_2, {
+				scale: 1 
+			});
+			proSroll.to(section, {
+				scrollTrigger: {
+					trigger: section,
+					pin: section,
+					scrub: 1,
+					start: "top 5%",
+					end: "bottom 64%",
+					ease: "none",
+					endTrigger: '.av-pro1-content',
+					pinSpacing: false,
+					markers: false,
+				},
+			})
+		});
+	}
+
+
+	if ($('.av-testi1-slider').length > 0 ) {
+		var slider = new Swiper('.av-testi1-slider', {
+			slidesPerView: 3,
+			loop: true,
+			spaceBetween: 32,
+			speed: 1000,
+			navigation: {
+				nextEl: ".av-testi1-next",
+				prevEl: ".av-testi1-prev",
+			},
+			autoplay: {
+				enabled: true,
+				delay: 6000
+			},
+			breakpoints: {
+				'1600': {
+					slidesPerView: 3,
+				},
+				'1400': {
+					slidesPerView: 3,
+				},
+				'992': {
+					slidesPerView: 2,
+				},
+				'768': {
+					slidesPerView: 1,
+				},
+				'576': {
+					slidesPerView: 1,
+				},
+				'0': {
+					slidesPerView: 1,
+				},
+			},
+		});
+	};
+
+
+	gsap.utils.toArray(' .left_view').forEach((el, index) => { 
+		let tlcta = gsap.timeline({
+			scrollTrigger: {
+				trigger: el,
+				scrub: 1.5,
+				start: "top 70%",
+				end: "top -5%",
+				toggleActions: "play none none reverse",
+				markers: false
+			}
+		})
+
+		tlcta
+		.set(el, {transformOrigin: 'center center'})
+		.from(el, { opacity: 0, scale: 1, x: "-300"}, {opacity: 1, y: 0, duration: 1, immediateRender: false})
+	});
+	gsap.utils.toArray(' .right_view').forEach((el, index) => { 
+		let tlcta = gsap.timeline({
+			scrollTrigger: {
+				trigger: el,
+				scrub: 1.5,
+				start: "top 70%",
+				end: "top -5%",
+				toggleActions: "play none none reverse",
+				markers: false
+			}
+		})
+
+		tlcta
+		.set(el, {transformOrigin: 'center center'})
+		.from(el, { opacity: 0, scale: 1, x: "300"}, {opacity: 1, y: 0, duration: 1, immediateRender: false})
+	});
 })(jQuery);

@@ -1,0 +1,129 @@
+.av-testi1-content {
+	overflow: hidden;
+	border-radius: 32px;
+	padding-bottom: 60px;
+}
+.av-testi-title {
+	h2 {
+		font-size: 180px;
+		font-weight: 800;
+		line-height: .7;
+		padding-right: 5px;
+		display: inline-block;
+		@extend%gradient-text;
+		letter-spacing: -4px;
+		font-family: var(--av-one);
+		@media #{$md,$sm,$xs,$xxs} {
+			font-size: 120px;
+		}
+		@media #{$xs} {
+			font-size: 90px;
+		}
+		@media #{$xxs} {
+			font-size: 80px;
+		}
+	}
+}
+.av-testi1-slider {
+	margin: 0 auto;
+	max-width: 1640px;
+}
+.av-testi1-item {
+	margin: 0 auto;
+	max-width: 531px;
+	border-radius: 24px;
+	padding: 12px 12px 24px;
+	background-color: #F0F2F4;
+	.item-desc-rate {
+		padding: 32px;
+		border-radius: 24px;
+		margin-bottom: 24px;
+		background-color: #fff;
+		.item-rate {
+			margin-bottom: 22px;
+			li {
+				color: #FFB400;
+			}
+		}
+		.item-desc {
+			color: #1A1A1A;
+			font-size: 20px;
+			font-weight: 500;
+			padding-bottom: 20px;
+			border-bottom: 2px dashed #C6C7C8;
+		}
+	}
+	.item-author {
+		gap: 12px;
+		padding-left: 12px;
+		.item-img {
+			width: 60px;
+			height: 60px;
+			overflow: hidden;
+			border-radius: 12px;
+		}
+		.item-text {
+			h3 {
+				font-size: 20px;
+				font-weight: 500;
+				padding-bottom: 4px;
+				color: var(--av-black1);
+			}
+			span {
+				color: #282828;
+			}
+		}
+	}
+}
+.av-testi1-nav {
+	@media #{$md,$sm,$xs,$xxs} {
+		gap: 15px;
+		display: flex;
+		margin-top: 20px;
+		justify-content: center;
+	}
+	.av-testi1-prev,
+	.av-testi1-next {
+		top: 50%;
+		z-index: 1;
+		width: 60px;
+		height: 60px;
+		overflow: hidden;
+		color: #1A1A1A;
+		position: absolute;
+		border-radius: 100%;
+		background-color: #F0F2F4;
+		transform: translateY(-50%);
+		@media #{$md,$sm,$xs,$xxs} {
+			left: 0 !important;
+			right: 0 !important;
+			position: relative;
+			transform: translateY(0%);
+		}
+		&:before {
+			top: 0;
+			left: 0;
+			z-index: -1;
+			height: 100%;
+			content: '';
+			width: 100%;
+			border-radius: 100%;
+			position: absolute;
+			transform: scale(0);
+			background: var(--av-prime-c1);
+			transition: all 500ms ease-in-out;
+		}
+		&:hover {
+			color: #fff;
+			&:before {
+				transform: scale(1.0);
+			}
+		}
+	}
+	.av-testi1-prev {
+		left: 30px;
+	}
+	.av-testi1-next {
+		right: 30px;
+	}
+}

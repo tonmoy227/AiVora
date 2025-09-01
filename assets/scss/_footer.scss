@@ -1,0 +1,136 @@
+.av-ftr1-sec {
+	z-index: 1;
+	margin-top: 12px;
+	.av-ftr1-icon {
+		left: -45px;
+		bottom: 0px;
+		position: absolute; 
+	}
+}
+.av-ftr1-content {
+	overflow: hidden;
+	padding: 35px 40px;
+	border-radius: 32px;
+	background-color: #282828;
+	@media #{$xl,$lg,$md,$sm,$xs,$xxs} {
+		padding: 30px 20px;
+	}
+}
+.av-ftr1-widget-wrap {
+	@media #{$lg,$md,$sm,$xs,$xxs} {
+		gap: 30px;
+		flex-wrap: wrap;
+	}
+}
+.av-ftr1-text-wrap {
+	max-width: 800px;
+	h2 {
+		font-size: 40px;
+		@media #{$lg,$md,$sm,$xs,$xxs} {
+			font-size: 30px;
+		}
+	}
+}
+.av-ftr1-widget-area {
+	gap: 24px;
+	width: 100%;
+	max-width: 746px;
+	@media #{$md,$sm,$xs,$xxs} {
+		flex-wrap: wrap;
+		max-width: 100%;
+	}
+}
+.av-ftr1-widget {
+	.widget-title {
+		color: #F0F2F4;
+		font-size: 24px;
+		position: relative;
+		padding-bottom: 20px;
+		display: inline-block;
+		margin-bottom: 30px;
+		&:before {
+			left: 0;
+			bottom: 0;
+			content: '';
+			height: 3px;
+			width: 72px;
+			position: absolute;
+			background-image: var(--av-prime-c1);
+		}
+		span {
+			position: relative;
+			&:before,
+			&:after {
+				width: 5px;
+				content: '';
+				height: 3px;
+				bottom: -20px;
+				position: absolute;
+				background-color: var(--av-black1);
+			}
+			&:before {
+				left: 28px;
+			}
+			&:after {
+				left: 48px;
+			}
+		}
+	}
+	.menu-widget {
+		width: 196px;
+		padding-left: 24px;
+		@media #{$md,$sm,$xs,$xxs} {
+			padding-left: 0;
+		}
+		li {
+			color: #F0F2F4;
+			margin-bottom: 12px;
+		}
+	}
+	.cta-widget {
+		.cta-info-wrap {
+			p {
+				color: #F0F2F4;
+				padding-bottom: 25px;
+			}
+			h3 {
+				color: #F0F2F4;
+				font-size: 24px;
+				padding-bottom: 15px;
+			}
+			span {
+				color: #F0F2F4;
+				font-size: 16px;
+				padding-bottom: 6px;
+			}
+			a {
+				color: #fff;
+				font-weight: 500;
+			}
+		}
+	}
+}
+.av-ftr1-copyright {
+	@media #{$lg,$md,$sm,$xs,$xxs} {
+		gap: 30px;
+		flex-wrap: wrap;
+		text-align: center;
+		justify-content: center !important;
+	}
+	.brand-logo {
+		width: 33.33%;
+		@media #{$sm,$xs,$xxs} {
+			width: 100%;
+		}
+	}
+	.bottom-social {
+		gap: 16px;
+		display: flex;
+		a {
+			color: #fff;
+			&:hover {
+				@extend%gradient-text;
+			}
+		}
+	}
+}

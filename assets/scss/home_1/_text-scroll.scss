@@ -1,4 +1,6 @@
 .at-text-scrol1-bg {
+	z-index: 1;
+	position: relative;
 	background-color: #F0F2F4;
 	.at-text-scrol1 {
 		h2 {
@@ -7,11 +9,12 @@
 	}
 }
 .at-text-scrol2-bg {
+	width: 105%;
 	transform: rotate(-4deg);
 	background-image: var(--av-prime-c1);
 }
 .at-text-scrol1 {
-	padding: 34px 0px 32px;
+	padding: 34px 0px 25px;
 	@media #{$lg,$md,$sm,$xs,$xxs} {
 		padding: 25px 0px;
 	}

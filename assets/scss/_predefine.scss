@@ -293,13 +293,35 @@ a {
 }
 .av-btn1 {
 	a {
+		z-index: 1;
 		color: #fff;
+		line-height: 1;
+		font-size: 16px;
 		font-weight: 500;
-		padding: 16px 24px;
+		overflow: hidden;
+		padding: 20px 24px;
 		border-radius: 50px;
 		white-space: nowrap;
+		position: relative;
 		border: 1px solid transparent;
 		background: linear-gradient(var(--av-black1), var(--av-black1)) padding-box, var(--av-prime-c1) border-box;
+		&:before {
+			top: 0;
+			left: 0;
+			z-index: -1;
+			width: 0%;
+			height: 100%;
+			content: '';
+			position: absolute;
+			border-radius: 50px;
+			background-image: var(--av-prime-c1);
+			transition: all 500ms ease-in-out;
+		}
+		&:hover {
+			&:before {
+				width: 100%;
+			}
+		}
 	}
 }
 .av-sec-title {
@@ -311,6 +333,21 @@ a {
 	}
 	.sec_title {
 		font-size: 55px;
+		.split-line {
+			display: inline-block !important; 
+		}
+		@media #{$sm} {
+			font-size: 48px;
+		}
+		@media #{$xs} {
+			font-size: 45px;
+		}
+		@media #{$xxs} {
+			font-size: 40px;
+		}
+		@media #{$xxxs} {
+			font-size: 36px;
+		}
 	}
 	p {
 		padding-top: 20px;
