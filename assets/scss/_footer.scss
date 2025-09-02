@@ -85,6 +85,27 @@
 		li {
 			color: #F0F2F4;
 			margin-bottom: 12px;
+			a {
+				position: relative;
+				&:before {
+					left: 0;
+					right: 0;
+					bottom: 0;
+					width: 0%;
+					content: '';
+					height: 1px;
+					margin: 0 auto;
+					position: absolute;
+					background: var(--av-prime-c1);
+					transition: all 500ms ease-in-out;
+				}
+				&:hover {
+					color: var(--av-c3);
+					&:before {
+						width: 100%;
+					}
+				}
+			}
 		}
 	}
 	.cta-widget {

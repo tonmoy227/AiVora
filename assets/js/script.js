@@ -368,4 +368,35 @@ Last change:    00/00/00
 		.set(el, {transformOrigin: 'center center'})
 		.from(el, { opacity: 0, scale: 1, x: "300"}, {opacity: 1, y: 0, duration: 1, immediateRender: false})
 	});
+
+
+	document.querySelectorAll(".av-pro1-item").forEach((projectItem) => {
+		const textEl = projectItem.querySelector(".item-text");
+		projectItem.addEventListener("mousemove", (e) => {
+			const rect = projectItem.getBoundingClientRect();
+			const x = e.clientX - rect.left;
+			const y = e.clientY - rect.top;
+			const moveX = (x / rect.width - 0.05) * 100; 
+			const moveY = (y / rect.height - 0.5) * 100;
+
+			gsap.to(textEl, {
+				x: moveX,
+				y: moveY,
+				duration: 4,
+				ease: "power2.out"
+			});
+		});
+		projectItem.addEventListener("mouseleave", () => {
+			gsap.to(textEl, {
+				x: 0,
+				y: 0,
+				duration: 5,
+				ease: "power3.out"
+			});
+		});
+	});
+
+
+
+
 })(jQuery);

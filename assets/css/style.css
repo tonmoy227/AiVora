@@ -3310,7 +3310,7 @@ a:hover, a:focus {
   }
 }
 .av-feat1-wrap .av-feat1-item {
-  z-index: 1;
+  z-index: 2;
   padding: 45px;
   overflow: hidden;
   border-radius: 12px;
@@ -3327,6 +3327,7 @@ a:hover, a:focus {
   top: 0;
   left: 0;
   opacity: 0;
+  z-index: -1;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -3374,12 +3375,14 @@ a:hover, a:focus {
   }
 }
 .av-feat1-wrap .item-btn a {
+  z-index: 1;
   width: 170px;
   height: 170px;
   margin: 0 auto;
   font-size: 16px;
   font-weight: 500;
   border-radius: 100%;
+  position: relative;
   border: 1px solid transparent;
   background: -webkit-gradient(linear, left top, left bottom, from(#1F1F1F), to(#1F1F1F)) padding-box, var(--av-prime-c1) border-box;
   background: linear-gradient(#1F1F1F, #1F1F1F) padding-box, var(--av-prime-c1) border-box;
@@ -3393,6 +3396,25 @@ a:hover, a:focus {
   margin-bottom: 10px;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
+}
+.av-feat1-wrap .item-btn a:before {
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  content: "";
+  position: absolute;
+  border-radius: 100%;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  background-image: var(--av-prime-c1);
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+}
+.av-feat1-wrap .item-btn a:hover:before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 .av-feat1-wrap:hover .av-feat1-item, .av-feat1-wrap:is(.active) .av-feat1-item {
   -webkit-transform: translateY(-200px);
@@ -3506,6 +3528,10 @@ a:hover, a:focus {
   overflow: hidden;
   border-radius: 12px;
 }
+.av-pro1-item .item-text .item-seral-img .inner-img img {
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+}
 @media only screen and (min-width: 481px) and (max-width: 575px), (max-width: 480px) {
   .av-pro1-item .item-text .item-seral-img .inner-img {
     display: none;
@@ -3532,6 +3558,10 @@ a:hover, a:focus {
 }
 .av-pro1-item .item-text .inner-text .av-btn1 a:hover {
   color: #fff;
+}
+.av-pro1-item .item-text:hover .inner-img img {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 /*---------------------------------------------------- */
@@ -3904,6 +3934,11 @@ a:hover, a:focus {
 /*---------------------------------------------------- */
 /*Blog area*/
 /*----------------------------------------------------*/
+.av-area-2 .av-area-shape1 {
+  top: 5%;
+  right: -5%;
+}
+
 .av-blog-sec .av-sec-title {
   max-width: 1405px;
 }
@@ -3927,9 +3962,15 @@ a:hover, a:focus {
 }
 
 .av-blog-item .item-img {
+  z-index: 1;
   overflow: hidden;
   border-radius: 24px;
   margin-bottom: 30px;
+  position: relative;
+}
+.av-blog-item .item-img img {
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
 }
 .av-blog-item .item-text {
   border-bottom: 1px solid #282828;
@@ -3966,23 +4007,35 @@ a:hover, a:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border-radius: 100%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
   position: relative;
+  border: 1px solid transparent;
+  background: -webkit-gradient(linear, left top, left bottom, from(var(--av-black1)), to(var(--av-black1))) padding-box, var(--av-prime-c1) border-box;
+  background: linear-gradient(var(--av-black1), var(--av-black1)) padding-box, var(--av-prime-c1) border-box;
 }
 .av-blog-item .blog-meta .read_more i:after {
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 2px;
+  left: 2px;
+  width: calc(100% - 4px);
   z-index: -1;
-  height: 100%;
+  height: calc(100% - 4px);
   content: "";
   border-radius: 100%;
   position: absolute;
+  -webkit-transform: scale(0);
+          transform: scale(0);
   background: var(--av-prime-c1);
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+}
+.av-blog-item .blog-meta .read_more:hover i:after {
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 .av-blog-item .blog-meta span {
   color: #C6C7C8;
@@ -4005,6 +4058,13 @@ a:hover, a:focus {
 }
 .av-blog-item:is(.type-two) .item-text p {
   max-width: 100%;
+}
+.av-blog-item:hover .item-img img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  mix-blend-mode: luminosity;
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
 }
 
 .av-blog-btn {
@@ -4084,6 +4144,9 @@ a:hover, a:focus {
   border-radius: 32px;
   border: 1px solid #F0F2F4;
   color: rgba(40, 40, 40, 0.6);
+  border: 1px solid transparent;
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
 }
 .av-contact1-form .input-field input::-webkit-input-placeholder, .av-contact1-form .input-field textarea::-webkit-input-placeholder {
   font-size: 14px;
@@ -4105,6 +4168,9 @@ a:hover, a:focus {
   font-size: 14px;
   color: rgba(40, 40, 40, 0.6);
 }
+.av-contact1-form .input-field input:focus, .av-contact1-form .input-field textarea:focus {
+  border: 1px solid var(--av-c4);
+}
 .av-contact1-form .input-field textarea {
   height: 115px;
   padding-top: 20px;
@@ -4119,6 +4185,11 @@ a:hover, a:focus {
   font-weight: 500;
   border-radius: 50px;
   background: var(--av-prime-c1);
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+}
+.av-contact1-form button:hover {
+  letter-spacing: 2px;
 }
 
 .av-contact1-newslatter {
@@ -4147,6 +4218,9 @@ a:hover, a:focus {
   padding-left: 24px;
   border-radius: 70px;
   background-color: #fff;
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+  border: 1px solid transparent;
 }
 .av-contact1-newslatter .newslatter-form input::-webkit-input-placeholder {
   font-size: 16px;
@@ -4167,6 +4241,9 @@ a:hover, a:focus {
 .av-contact1-newslatter .newslatter-form input::placeholder {
   font-size: 16px;
   color: #282828;
+}
+.av-contact1-newslatter .newslatter-form input:focus {
+  border: 1px solid #000;
 }
 .av-contact1-newslatter .newslatter-form button {
   gap: 12px;
@@ -4319,6 +4396,28 @@ a:hover, a:focus {
 .av-ftr1-widget .menu-widget li {
   color: #F0F2F4;
   margin-bottom: 12px;
+}
+.av-ftr1-widget .menu-widget li a {
+  position: relative;
+}
+.av-ftr1-widget .menu-widget li a:before {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 0%;
+  content: "";
+  height: 1px;
+  margin: 0 auto;
+  position: absolute;
+  background: var(--av-prime-c1);
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+}
+.av-ftr1-widget .menu-widget li a:hover {
+  color: var(--av-c3);
+}
+.av-ftr1-widget .menu-widget li a:hover:before {
+  width: 100%;
 }
 .av-ftr1-widget .cta-widget .cta-info-wrap p {
   color: #F0F2F4;

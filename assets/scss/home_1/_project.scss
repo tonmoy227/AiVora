@@ -67,6 +67,9 @@
 				height: 120px;
 				overflow: hidden;
 				border-radius: 12px;
+				img {
+					transition: all 500ms ease-in-out;
+				}
 				@media #{$xs,$xxs} {
 					display: none;
 				}
@@ -90,6 +93,13 @@
 				background: linear-gradient(#F0F2F4, #F0F2F4) padding-box, var(--av-prime-c1) border-box;
 				&:hover {
 					color: #fff;
+				}
+			}
+		}
+		&:hover {
+			.inner-img {
+				img {
+					transform: scale(1.2);
 				}
 			}
 		}
