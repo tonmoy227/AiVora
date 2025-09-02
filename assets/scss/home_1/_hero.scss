@@ -248,6 +248,7 @@
 		h3 {
 			font-size: 42px;
 			font-weight: 600;
+			white-space: nowrap;
 			@media #{$xxl} {
 				font-size: 30px;
 			}
