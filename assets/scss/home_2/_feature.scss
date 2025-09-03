@@ -1,0 +1,119 @@
+.av-feat2-sec {
+	.av-sec-title {
+		margin: 0 auto;
+		max-width: 900px;
+	}
+}
+.av-feat2-content {
+	margin: 0 auto;
+	margin-top: 60px;
+	max-width: 1460px;
+	position: relative;
+	padding: 68px 100px;
+	background-color: #1F1F1F;
+	@media #{$xxl,$xl,$lg,$md,$sm,$xs,$xxs} {
+		justify-content: center !important;
+	}
+	@media #{$xs,$xxs} {
+		padding: 68px 15px;
+	}
+	&:before {
+		top: 50%;
+		width: 100%;
+		height: 1px;
+		content: '';
+		position: absolute;
+		transform: translateY(-50%);
+		background-image: linear-gradient(90deg, rgba(148, 148, 149, 0) 0%, rgba(148, 148, 149, 0.18) 49.91%, rgba(148, 148, 149, 0) 100%);
+		@media #{$xxl,$xl,$lg,$md,$sm,$xs,$xxs} {
+			display: none;
+		}
+	}
+}
+.av-feat2-item {
+	padding: 24px;
+	max-width: 372px;
+	margin: 32px 0px;
+	position: relative;
+	@media #{$xxl,$xl,$lg,$md,$sm,$xs,$xxs} {
+		margin: 20px 0px;
+	}
+	&:before {
+		top: 0;
+		content: '';
+		width: 1px;
+		right: -35px;
+		height: 100%;
+		position: absolute;
+		background-image: linear-gradient(0deg, rgba(148, 148, 149, 0) 0%, rgba(148, 148, 149, 0.18) 49.91%, rgba(148, 148, 149, 0) 100%);
+		@media #{$xxl,$xl,$lg,$md,$sm,$xs,$xxs} {
+			display: none;
+		}
+	}
+	&:nth-child(3),
+	&:nth-child(6) {
+		&:before {
+			display: none;
+		}
+	}
+	.item-icon {
+		width: 60px;
+		height: 60px;
+		margin: 0 auto;
+		margin-bottom: 35px;
+	}
+	.item-text {
+		h3 {
+			color: #F0F2F4;
+			font-size: 20px;
+			font-weight: 600;
+			padding-bottom: 12px;
+		}
+		p {
+			color: #C6C7C8;
+			padding-bottom: 40px;
+		}
+		.read_more {
+			gap: 12px;
+			display: flex;
+			color: #F0F2F4;
+			font-size: 16px;
+			font-weight: 500;
+			align-items: center;
+			justify-content: center;
+			i {
+				z-index: 1;
+				width: 36px;
+				height: 36px;
+				display: flex;
+				color: #FFFFFF;
+				border-radius: 100%;
+				align-items: center;
+				position: relative;
+				justify-content: center;
+				transform: rotate(-45deg);
+				border: 1px solid #282828;
+				&:after {
+					top: 0;
+					left: 0;
+					z-index: -1;
+					width: 100%;
+					content: '';
+					height: 100%;
+					border-radius: 100%;
+					position: absolute;
+					transform: scale(0);
+					background: var(--av-prime-c1);
+					transition: all 500ms ease-in-out;
+				}
+			}
+			&:hover {
+				i {
+					&:after {
+						transform: scale(1.0);
+					}
+				}
+			}
+		}
+	}
+}

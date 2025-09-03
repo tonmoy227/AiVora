@@ -336,17 +336,20 @@ a {
 		.split-line {
 			display: inline-block !important; 
 		}
-		@media #{$sm} {
+		@media #{$md} {
 			font-size: 48px;
 		}
-		@media #{$xs} {
-			font-size: 45px;
-		}
-		@media #{$xxs} {
+		@media #{$sm} {
 			font-size: 40px;
 		}
-		@media #{$xxxs} {
+		@media #{$xs} {
 			font-size: 36px;
+		}
+		@media #{$xxs} {
+			font-size: 30px;
+		}
+		@media #{$xxxs} {
+			font-size: 26px;
 		}
 	}
 	p {

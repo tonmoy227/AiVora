@@ -1,0 +1,88 @@
+.av-project2-sec {
+	padding: 0px 20px;
+	.av-ser1-top-content {
+		.av-sec-title {
+			max-width: 870px;
+		}
+	}
+}
+.av-project2-wrapper {
+	padding: 100px;
+	border-radius: 32px;
+	@media #{$xl,$lg,$md,$sm} {
+		padding: 50px 30px;
+	}
+	@media #{$xs,$xxs} {
+		padding: 50px 15px;
+	}
+}
+.av-project2-content {
+	.row {
+		--bs-gutter-x: 48px;
+	}
+}
+.av-pro2-item {
+	max-width: 816px;
+	margin-bottom: 48px;
+	.item-img {
+		clip-path: polygon( 0% 5.861%,0% 5.861%,0.051% 4.91%,0.2% 4.008%,0.438% 3.167%,0.757% 2.399%,1.149% 1.717%,1.606% 1.131%,2.119% 0.654%,2.682% 0.299%,3.285% 0.077%,3.922% 0%,86.765% 0%,86.765% 0%,87.401% 0.077%,88.004% 0.299%,88.567% 0.654%,89.081% 1.131%,89.538% 1.717%,89.93% 2.399%,90.249% 3.167%,90.486% 4.008%,90.635% 4.91%,90.686% 5.861%,90.686% 6.593%,90.686% 6.593%,90.75% 7.782%,90.936% 8.909%,91.233% 9.96%,91.632% 10.92%,92.122% 11.774%,92.693% 12.506%,93.336% 13.102%,94.039% 13.546%,94.793% 13.824%,95.588% 13.919%,96.078% 13.919%,96.078% 13.919%,96.715% 13.996%,97.318% 14.218%,97.881% 14.574%,98.394% 15.05%,98.851% 15.636%,99.243% 16.319%,99.562% 17.087%,99.8% 17.928%,99.949% 18.83%,100% 19.78%,100% 94.139%,100% 94.139%,99.949% 95.09%,99.8% 95.992%,99.562% 96.833%,99.243% 97.601%,98.851% 98.283%,98.394% 98.869%,97.881% 99.346%,97.318% 99.701%,96.715% 99.923%,96.078% 100%,3.922% 100%,3.922% 100%,3.285% 99.923%,2.682% 99.701%,2.119% 99.346%,1.606% 98.869%,1.149% 98.283%,0.757% 97.601%,0.438% 96.833%,0.2% 95.992%,0.051% 95.09%,0% 94.139%,0% 5.861% );
+	}
+	.item-icon {
+		top: 0;
+		right: 0;
+		position: absolute;
+		a {
+			z-index: 1;
+			width: 64px;
+			height: 64px;
+			font-size: 22px;
+			border-radius: 100%;
+			position: relative;
+			transform: rotate(-45deg);
+			border: 1px solid transparent;
+			background: linear-gradient(#212121, #212121) padding-box, var(--av-prime-c1) border-box;
+			&:before {
+				top: 0;
+				left: 0;
+				z-index: -1;
+				width: 100%;
+				content: '';
+				height: 100%;
+				border-radius: 100%;
+				transform: scale(0);
+				position: absolute;
+				transition: all 500ms ease-in-out;
+				background-image: var(--av-prime-c1);
+			}
+		}
+	}
+	.item-text {
+		h3 {
+			color: #F0F2F4;
+			font-size: 40px;
+			padding-bottom: 15px;
+			@media #{$sm} {
+				font-size: 34px;
+			}
+			@media #{$xs} {
+				font-size: 30px;
+			}
+			@media #{$xxs} {
+				font-size: 28px;
+			}
+			@media #{$xxxs} {
+				font-size: 24px;
+			}
+		}
+		span {
+			a {
+				color: #E0E2E6;
+				font-size: 14px;
+				padding: 8px 18px;
+				border-radius: 32px;
+				border: 1px solid transparent;
+				background: linear-gradient(var(--av-black1), var(--av-black1)) padding-box, var(--av-prime-c1) border-box;
+			}
+		}
+	}
+}

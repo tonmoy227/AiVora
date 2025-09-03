@@ -2,6 +2,14 @@
 	z-index: 1;
 	position: relative;
 	background-color: #F0F2F4;
+	&:is(.ver_2) {
+		background-image: var(--av-prime-c1);
+		.at-text-scrol1 {
+			h2 {
+				color: #fff;
+			}
+		}
+	}
 	.at-text-scrol1 {
 		h2 {
 			color: var(--av-black1);
@@ -12,6 +20,9 @@
 	width: 105%;
 	transform: rotate(-4deg);
 	background-image: var(--av-prime-c1);
+	&:is(.ver_2) {
+		background: #1F1F1F;
+	}
 }
 .at-text-scrol1 {
 	padding: 34px 0px 25px;
