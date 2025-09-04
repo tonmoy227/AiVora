@@ -191,7 +191,27 @@ Last change:    00/00/00
 				}, 1000 ) ;
 
 			}
-
+			gsap.utils.toArray(".av-text p").forEach(paragraph => {
+				let timeline = gsap.timeline({
+					scrollTrigger: {
+						trigger: paragraph,
+						start: "top 90%",
+						end: "bottom 60%",
+						toggleActions: "play none none none"
+					}
+				});
+				let splitText = new SplitText(paragraph, { type: "lines" });
+				gsap.set(paragraph, { perspective: 400 });
+				timeline.from(splitText.lines, {
+					opacity: 0,
+					rotationX: -80,
+					transformOrigin: "top center -50",
+					force3D: true,
+					duration: 1,
+					delay: 0.5,
+					stagger: 0.1
+				});
+			});
 			setTimeout(function() {
 				if ($('.av-hero1-slider').length > 0 ) {
 					var slider = new Swiper('.av-hero1-slider', {
@@ -215,7 +235,50 @@ Last change:    00/00/00
 				const AIHERO1 = gsap.timeline();
 				AIHERO1
 				.from(".av-hero1-client", { opacity:0, rotate: 0,  scale: 1.5, duration: 1, transformOrigin: "center",  ease: "power1.out" })
-				.from(".av-hr1-count-item", { opacity:0, rotate: 0,  scale: 1.5, duration: 1, transformOrigin: "center",  ease: "power1.out" },"< ")
+				.from(".av-hr1-count-item", { opacity:0, rotate: 0,  scale: 1.5, duration: 1, transformOrigin: "center",  ease: "power1.out" })
+				
+				if($(".av_hr2_title").length) {
+					var AGTTitleAni = $(".av_hr2_title");
+					if(AGTTitleAni.length == 0) return; gsap.registerPlugin(SplitText); AGTTitleAni.each(function(index, el) {
+
+						el.split = new SplitText(el, { 
+							type: "lines",
+							wordsClass: "split-line"
+						});
+
+						gsap.set(el, { perspective: 400 });
+
+						if( $(el).hasClass('av_hero_title2') ){
+							gsap.set(el.split.lines, {
+								y: 100,
+								opacity: 0,
+							});
+						}
+						el.anim = gsap.to(el.split.lines, {
+							scrollTrigger: {
+								trigger: el,
+								start: "top 90%",
+								toggleActions: "play reverse play reverse",
+								markers: false,
+							},
+							x: 0,
+							y: 0,
+							scaleX: 1,
+							opacity: 1,
+							duration: 1,
+							stagger: .2,
+							ease: "power1.inOut",
+						});
+
+					});
+				}
+
+				const AIHERO2 = gsap.timeline();
+				AIHERO2
+				.from(".av-hero2-img-text .item-icon-wrap .item-icon", { opacity:0, rotate: "360deg",  scale: .5, duration: 1,  ease: "power1.out" })
+				.from(".av-hero2-img-text .hr2-img img", { x: -350,  scale: 2.5, duration: 2,  ease: "power1.out" },"<")
+				.from(".av-hero2-img-text .av-hr2-scroll", {  xPercent: 50, rotate: "360deg", duration: 1,  ease: "power1.out" },"< = .4")
+				.from(".av-hero2-img-text .icon-text .item-text", { opacity:0, x: 50,  scale: .5, duration: 1,  ease: "power1.out" },"< = .4 ")
 				
 			}, 700);
 		})		
@@ -397,6 +460,20 @@ Last change:    00/00/00
 	});
 
 
-
+	const boxes = gsap.utils.toArray('.txt_item_active');
+	boxes.forEach(svg => {
+		gsap.to(svg, {
+			scrollTrigger: {
+				trigger: svg,
+				start: "top 100%",
+				end: "bottom bottom",
+				toggleClass: "active",
+				duration: 3,
+				delay:1,
+				toggleActions: "play play play reverse",
+				once: true,
+			}
+		});
+	});
 
 })(jQuery);

@@ -67,6 +67,11 @@
 			font-size: 24px;
 			font-weight: 600;
 			padding-bottom: 15px;
+			a {
+				&:hover {
+					color: var(--av-c1);
+				}
+			}
 		}
 		p {
 			color: #C6C7C8;

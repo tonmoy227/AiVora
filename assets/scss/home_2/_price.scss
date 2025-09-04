@@ -8,21 +8,71 @@
 .av-price2-plan-btn {
 	width: 100%;
 	max-width: 868px;
+	.nav-tabs .nav-link {
+		padding: 0;
+		&:is(.active) {
+			.av-price2-plan {
+				&:before {
+					width: 100%;
+				}
+				.item-icon {
+					background-color: #FFFFFF;
+					svg {
+						path {
+							opacity: 1;
+							stroke: url(#strokeGradient);
+						}
+					}
+				}
+			}
+		}
+	}
 }
 .av-price2-plan {
+	z-index: 1;
 	padding: 43px 40px;
 	border-radius: 24px;
+	margin-bottom: 24px;
+	position: relative;
 	border: 1px solid  #212121;
+	@media #{$xl} {
+		padding: 25px 15px;
+	}
+	@media #{$sm,$xs,$xxs} {
+		gap: 20px;
+		flex-wrap: wrap;
+	}
+	&:before {
+		top: 0;
+		left: 0;
+		width: 0%;
+		z-index: -1;
+		content: '';
+		height: 100%;
+		position: absolute;
+		border-radius: 24px;
+		transition: all 500ms ease-in-out;
+		background-image: var(--av-prime-c1);
+	}
 	.item-icon-text {
 		gap: 16px;
 		width: 100%;
 		max-width: 551px;
+		@media #{$sm,$xs,$xxs} {
+			flex-wrap: wrap;
+		}
 	}
 	.item-icon {
 		width: 89px;
 		height: 89px;
 		border-radius: 24px;
 		background-color: #1F1F1F ;
+		transition: all 500ms ease-in-out;
+		path {
+			stroke: white;
+			opacity: .8;
+			transition: all 500ms ease-in-out;
+		}
 	}
 	.item-text {
 		h3 {
@@ -47,6 +97,77 @@
 				font-weight: 500;
 				letter-spacing: 0px;
 			}	
+		}
+	}
+}
+.av-price2-content {
+	gap: 24px;
+	@media #{$lg,$md,$sm,$xs,$xxs} {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+}
+.av-price2-tab-content {
+	width: 100%;
+	max-width: 570px;
+	@media #{$xl} {
+		max-width: 500px;
+	}
+	@media #{$lg,$md,$sm,$xs,$xxs} {
+		max-width: 868px;
+	}
+}
+.av-price2-list-item {
+	width: 100%;
+	padding: 32px;
+	border-radius: 24px;
+	background: var(--av-prime-c1);
+	@media #{$xxs} {
+		padding: 20px 15px;
+	}
+	.top_title {
+		h3 {
+			color: #fff;
+			font-size: 32px;
+			font-weight: 600;
+			padding-bottom: 10px;
+		}
+		p {
+			color: #fff;
+			max-width: 380px;
+		}
+	}
+	.av-price-list {
+		margin-top: 30px;
+		border-radius: 24px;
+		background-color: #fff;
+		padding: 20px 32px 32px;
+		h3 {
+			color: #282828;
+			font-size: 55px;
+			font-weight: 600;
+			sub {
+				font-size: 18px;
+				font-weight: 400;
+			}
+			margin-bottom: 30px;
+		}
+		li {
+			margin-bottom: 14px;
+			color: rgba(40, 40, 40, .8);
+			i {
+				margin-right: 10px;
+			}
+		}
+		.price_btn {
+			color: #fff;
+			width: 100%;
+			padding: 14px;
+			font-size: 16px;
+			margin-top: 30px;
+			font-weight: 500;
+			border-radius: 120px;
+			background: var(--av-prime-c1);
 		}
 	}
 }
