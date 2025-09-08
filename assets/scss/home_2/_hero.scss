@@ -117,31 +117,31 @@
 			}
 		}
 	}
-	.av-hr2-scroll {
-		top: -60px;
-		right: 107px;
-		width: 184px;
-		height: 184px;
+}
+.av-hr2-scroll {
+	top: -60px;
+	right: 107px;
+	width: 184px;
+	height: 184px;
+	position: absolute;
+	border-radius: 100%;
+	background-color: #fff;
+	border: 10px solid var(--av-black1);
+	@media #{$lg} {
+		top: 0;
+		right: 0;
+	}
+	@media #{$md,$sm,$xs,$xxs} {
+		display: none !important;
+	}
+	i {
+		left: 0;
+		top: 40%;
+		right: 0;
+		text-align: center;
 		position: absolute;
-		border-radius: 100%;
-		background-color: #fff;
-		border: 10px solid var(--av-black1);
-		@media #{$lg} {
-			top: 0;
-			right: 0;
-		}
-		@media #{$md,$sm,$xs,$xxs} {
-			display: none !important;
-		}
-		i {
-			left: 0;
-			top: 40%;
-			right: 0;
-			text-align: center;
-			position: absolute;
-			transform: translateY(-50%);
-			animation: bounceDown 1.5s infinite;
-		}
+		transform: translateY(-50%);
+		animation: bounceDown 1.5s infinite;
 	}
 }
 .av-hr2-client {
