@@ -1,0 +1,130 @@
+.av-testi3-sec {
+	.av-sec-title {
+		margin: 0 auto;
+		max-width: 600px;
+	}
+}
+.av-testi3-slider {
+	&:before {
+		top: 0;
+		width: 1px;
+		content: '';
+		right: 167px;
+		height: 100%;
+		position: absolute;
+		background-color: rgba(198, 199, 200, .1);
+		@media #{$xl,$lg,$md,$sm,$xs,$xxs} {
+			display: none;
+		}
+	}
+}
+.av-testi3-item {
+	gap: 40px 100px;
+	border: 1px solid  rgba(198, 199, 200, .1);
+	@media #{$xl,$lg,$md,$sm,$xs,$xxs} {
+		gap: 40px 30px;
+	}
+	@media #{$md,$sm,$xs,$xxs} {
+		flex-wrap: wrap;
+	}
+	.item-text {
+		max-width: 524px;
+		@media #{$lg,$md,$sm,$xs,$xxs} {
+			padding-right: 30px;
+		}
+		@media #{$md,$sm,$xs,$xxs} {
+			max-width: 100%;
+			padding-bottom: 40px;
+			padding-left: 15px;
+		}
+		li {
+			color: #FFB400;
+		}
+		p {
+			font-size: 24px;
+			padding: 30px 0px 80px;
+			@media #{$lg,$md,$sm,$xs,$xxs} {
+				padding: 15px 0px 20px;
+			}
+		}
+		.item-author {
+			h3 {
+				color: #FFFFFF;
+				font-size: 26px;
+				letter-spacing: -1px;
+				padding-bottom: 5px;
+			}
+			span {
+				color: #C6C7C8;
+			}
+		}
+	}
+	.av-testi3-icon {
+		top: 77px;
+		right: 33px;
+		color: #fff;
+		width: 100px;
+		height: 100px;
+		font-size: 30px;
+		position: absolute;
+		border-radius: 100%;
+		background-color: #F14F44;
+		@media #{$xl,$lg,$md,$sm,$xs,$xxs} {
+			top: 15px;
+			right: 15px;
+			width: 50px;
+			height: 50px;
+		}
+	}
+}
+.av-testi3-content {
+	margin: 0 auto;
+	max-width: 1460px;
+}
+.av-testi3-nav {
+	right: 0;
+	bottom: 0;
+	z-index: 2;
+	position: absolute;
+	@media #{$xl,$lg} {
+		bottom: 30px;
+	}
+	@media #{$md,$sm,$xs,$xxs} {
+		display: flex;
+		position: static;
+		justify-content: center;
+	}
+	.arrow-nav {
+		width: 167px;
+		height: 155px;
+		cursor: pointer;
+		padding-top: 40px;
+		border-top: 1px solid  rgba(198, 199, 200, .1);
+		@media #{$xl,$lg,$md,$sm,$xs,$xxs} {
+			width: 80px;
+			height: 80px;
+			border: none;
+			padding-top: 20px;
+		}
+		span {
+			color: #fff;
+			display: block;
+			font-weight: 500;
+			margin-top: 15px;
+			@media #{$xl,$lg,$md,$sm,$xs,$xxs} {
+				display: none;
+			}
+		}
+		i {
+			width: 40px;
+			height: 40px;
+			display: flex;
+			margin: 0 auto;
+			border-radius: 100%;
+			align-items: center;
+			justify-content: center;
+			border: 1px solid transparent;
+			background: linear-gradient(#212121, #212121) padding-box, var(--av-prime-c1) border-box;
+		}
+	}
+}

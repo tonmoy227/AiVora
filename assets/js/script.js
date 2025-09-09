@@ -103,7 +103,19 @@ Last change:    00/00/00
 		pauseOnHover: true,
 		startVisible:true,
 	});
-	
+	$(window).on("scroll", function() {
+		if ($(this).scrollTop() > 200) {
+			$('.at-scrollup').fadeIn();
+		} else {
+			$('.at-scrollup').fadeOut();
+		}
+	});
+	$('.at-scrollup').on("click", function()  {
+		$("html, body").animate({
+			scrollTop: 0
+		}, 800);
+		return false;
+	});
 	gsap.registerPlugin(ScrollTrigger);
 	
 	// Animation
@@ -329,7 +341,7 @@ Last change:    00/00/00
 
 	$('.av-item-active').each(function () {
 		var $wrap = $(this);
-		var $items = $wrap.find('.av-feat1-wrap');
+		var $items = $wrap.find('.av-feat1-wrap, .av-hw-item1');
 
 		$items.on('mouseover', function () {
 			$items.removeClass('active');

@@ -64,7 +64,7 @@ body::-webkit-scrollbar-thumb {
 	outline: none;
 	border-radius: 0px;
 	background-size: 200%, 1px;
-	background-color: var(--tz-prime-c);
+	background: var(--av-prime-c1);
 }
 .ul-li ul {
 	margin: 0;
@@ -214,6 +214,24 @@ a {
 		animation: 5s heartBeat  infinite;
 	}
 	
+}
+.at-scrollup {
+	color: #fff;
+	width: 70px;
+	right: 20px;
+	z-index: 5;
+	height: 50px;
+	bottom: 20px;
+	display: none;
+	font-size: 16px;
+	position: fixed;
+	font-weight: 700;
+	line-height: 72px;
+	background: var(--av-prime-c1);
+	clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+	i {
+		color: #fff;
+	}
 }
 .form-control {
 	box-shadow: none;

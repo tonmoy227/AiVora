@@ -115,6 +115,12 @@
 			}
 		}
 	}
+	&:is(.type-three) {
+		max-width: 836px;
+	}
+	&:is(.type-four) {
+		max-width: 422px;
+	}
 	&:hover {
 		.item-img {
 			img {
@@ -132,4 +138,7 @@
 	@media #{$md,$sm,$xs,$xxs} {
 		position: static;
 	}
+}
+.av-blog3-content {
+	gap: 40px;
 }

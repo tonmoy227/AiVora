@@ -4,3 +4,92 @@
 		max-width: 1000px;
 	}
 }
+.av-how-work-content {
+	gap: 24px;
+	@media #{$md,$sm,$xs,$xxs} {
+		flex-wrap: wrap;
+	}
+}
+.av-hw-item1 {
+	width: 100%;
+	height: 420px;
+	cursor: pointer;
+	max-width: 160px;
+	padding-top: 40px;
+	padding-right: 20px;
+	padding-left: 55px;
+	border-radius: 20px;
+	padding-bottom: 40px;
+	flex-direction: column;
+	background-color: #1F1F1F;
+	transition: all 800ms ease-in-out;
+	@media #{$lg,$md,$sm,$xs,$xxs} {
+		padding: 40px;
+		height: 100%;
+		max-width: 100%;
+	}
+	.serial-title {
+		gap: 10px 32px;
+		@media #{$lg,$md,$sm,$xs,$xxs} {
+			flex-wrap: wrap;
+			margin-bottom: 20px;
+		}
+		h2 {
+			line-height: 1;
+			font-weight: 600;
+			font-size: 120px;
+			margin-top: -10px;
+		}
+		h4 {
+			opacity: 0;
+			color: #FFFFFF;
+			font-size: 24px;
+			max-width: 190px;
+			font-weight: 600;
+			visibility: hidden;
+			transition: all 500ms ease-in-out;
+			@media #{$lg,$md,$sm,$xs,$xxs} {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+	.item-desc {
+		opacity: 0;
+		margin-bottom: 40px;
+		visibility: hidden;
+		transition: all 500ms ease-in-out;
+		@media #{$lg,$md,$sm,$xs,$xxs} {
+			opacity: 1;
+			margin-bottom: 0;
+			visibility: visible;
+		}
+		p {
+			font-size: 20px;
+			max-width: 720px;
+		}
+	}
+	&:is(.active) {
+		padding: 40px;
+		max-width: 909px;
+		@media #{$md,$sm,$xs,$xxs} {
+			max-width: 100%;
+		}
+		.serial-title {
+			h2 {
+				@extend%gradient-text;
+			}
+			h4 {
+				opacity: 1;
+				visibility: visible;
+				transition-delay: 400ms;
+			}
+		}
+		.item-desc {
+			opacity: 1;
+			margin-bottom: 0px;
+			visibility: visible;
+			transition-delay: 400ms;
+		}
+	}
+}
