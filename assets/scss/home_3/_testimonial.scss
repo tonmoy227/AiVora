@@ -4,6 +4,9 @@
 		max-width: 600px;
 	}
 }
+.av-testi3-wrap {
+	border-radius: 32px;
+}
 .av-testi3-slider {
 	&:before {
 		top: 0;
@@ -27,6 +30,13 @@
 	@media #{$md,$sm,$xs,$xxs} {
 		flex-wrap: wrap;
 	}
+	.item-img {
+		overflow: hidden;
+		img {
+			transform: scale(1.5);
+			transition: all 900ms ease-in-out;
+		}
+	}
 	.item-text {
 		max-width: 524px;
 		@media #{$lg,$md,$sm,$xs,$xxs} {
@@ -38,16 +48,25 @@
 			padding-left: 15px;
 		}
 		li {
+			opacity: 0;
 			color: #FFB400;
+			transform: translateY(10px);
+			transition: all 300ms ease-in-out;
 		}
 		p {
+			opacity: 0;
 			font-size: 24px;
 			padding: 30px 0px 80px;
+			transition: all 700ms ease-in-out;
+			clip-path: polygon(0 0, 100% 0%, 100% 0, 0 0);
 			@media #{$lg,$md,$sm,$xs,$xxs} {
 				padding: 15px 0px 20px;
 			}
 		}
 		.item-author {
+			opacity: 0;
+			transform: translateY(50px);
+			transition: all 700ms ease-in-out;
 			h3 {
 				color: #FFFFFF;
 				font-size: 26px;
@@ -117,6 +136,7 @@
 		}
 		i {
 			width: 40px;
+			z-index: 1;
 			height: 40px;
 			display: flex;
 			margin: 0 auto;
@@ -124,7 +144,68 @@
 			align-items: center;
 			justify-content: center;
 			border: 1px solid transparent;
+			position: relative;
 			background: linear-gradient(#212121, #212121) padding-box, var(--av-prime-c1) border-box;
+			&:after {
+				top: 0;
+				left: 0;
+				z-index: -1;
+				width: 100%;
+				height: 100%;
+				content: '';
+				position: absolute;
+				border-radius: 100%;
+				transform: scale(0);
+				transition: all 500ms ease-in-out;
+				background-image: var(--av-prime-c1);
+			}
+		}
+		&:hover {
+			i {
+				&:after {
+					transform: scale(1.0);
+				}
+			}
+
+		}
+	}
+}
+
+.swiper-slide-active {
+	.item-img {
+		img {
+			transform: scale(1.0);
+		}
+	}
+	.item-text {
+		p {
+			opacity: 1;
+			transition-delay: 450ms;
+			clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+		}
+		li {
+			opacity: 1;
+			transform: translateY(0);
+			&:nth-child(1) {
+				transition-delay: 100ms;
+			}
+			&:nth-child(2) {
+				transition-delay: 150ms;
+			}
+			&:nth-child(3) {
+				transition-delay: 200ms;
+			}
+			&:nth-child(4) {
+				transition-delay: 250ms;
+			}
+			&:nth-child(5) {
+				transition-delay: 300ms;
+			}
+		}
+		.item-author {
+			opacity: 1;
+			transform: translateY(0px);
+			transition-delay: 350ms;
 		}
 	}
 }

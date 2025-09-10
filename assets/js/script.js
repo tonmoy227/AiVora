@@ -57,18 +57,50 @@ Last change:    00/00/00
 		});
 	}
 	TXTheaderSticky();
-	jQuery(window).on('scroll', function() {
-		if (jQuery(window).scrollTop() > 250) {
-			jQuery('.ag-header-section.header_style_three, .ag-header-section.header_style_four').addClass('sticky-on')
-		} else {
-			jQuery('.ag-header-section.header_style_three, .ag-header-section.header_style_four').removeClass('sticky-on')
-		}
+		// search-popup-start
+	$('.search_btn_toggle').on('click', function() {
+		$('.overlay, .search_box_active').addClass('active');
+	});
+
+	$('.overlay, .search_box_close').on('click', function() {
+		$('.search_box_active').removeClass('active');
+		$('.overlay').removeClass('active');
+	});
+	jQuery(document).ready(function (o) {
+		0 < o(".navSidebar-button").length &&
+		o(".navSidebar-button").on("click", function (e) {
+			e.preventDefault(), e.stopPropagation(), o(".info-group").addClass("isActive");
+		}),
+		0 < o(".close-side-widget").length &&
+		o(".close-side-widget").on("click", function (e) {
+			e.preventDefault(), o(".info-group").removeClass("isActive");
+		}),
+		o(".xs-sidebar-widget").on("click", function (e) {
+			e.stopPropagation();
+		})
 	});
 	$('.open_mobile_menu').on("click", function() {
 		$('.mobile_menu_wrap').toggleClass("mobile_menu_on");
 	});
 	$('.open_mobile_menu').on('click', function () {
 		$('body').toggleClass('mobile_menu_overlay_on');
+	});
+	$('.zoom-gallery').magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		closeOnContentClick: false,
+		closeBtnInside: false,
+		mainClass: 'mfp-with-zoom mfp-img-mobile',
+		gallery: {
+			enabled: true
+		},
+		zoom: {
+			enabled: true,
+			duration: 300, 
+			opener: function(element) {
+				return element.find('img');
+			}
+		}
 	});
 	jQuery(".mobile-main-navigation li.dropdown").append('<span class="dropdown-btn"><i class="fas fa-angle-down"></i></span>'),
 	jQuery(".mobile-main-navigation li .dropdown-btn").on("click", function () {
@@ -255,12 +287,18 @@ Last change:    00/00/00
 
 						el.split = new SplitText(el, { 
 							type: "lines",
-							wordsClass: "split-line"
+							linesClass: "split-line"
 						});
 
 						gsap.set(el, { perspective: 400 });
 
 						if( $(el).hasClass('av_hero_title2') ){
+							gsap.set(el.split.lines, {
+								y: 100,
+								opacity: 0,
+							});
+						}
+						if( $(el).hasClass('av_hero_title3') ){
 							gsap.set(el.split.lines, {
 								y: 100,
 								opacity: 0,
@@ -285,6 +323,44 @@ Last change:    00/00/00
 					});
 				}
 
+				if($(".av_hr3_title").length) {
+					var AGTTitleAni = $(".av_hr3_title");
+					if(AGTTitleAni.length == 0) return; gsap.registerPlugin(SplitText); AGTTitleAni.each(function(index, el) {
+
+						el.split = new SplitText(el, { 
+							type: "words",
+							wordsClass: "split-line"
+						});
+
+						gsap.set(el, { perspective: 400 });
+						if( $(el).hasClass('av_hero_title3') ){
+							gsap.set(el.split.words, {
+								y: 100,
+								scaleY: 0,
+								opacity: 0,
+								rotateX: "-90deg"
+							});
+						}
+						el.anim = gsap.to(el.split.words, {
+							scrollTrigger: {
+								trigger: el,
+								start: "top 90%",
+								toggleActions: "play reverse play reverse",
+								markers: false,
+							},
+							x: 0,
+							y: 0,
+							scaleY: 1,
+							opacity: 1,
+							duration: 1,
+							stagger: .2,
+							rotateX: "0",
+							ease: "back.inOut(1.7)",
+						});
+
+					});
+				}
+
 				const AIHERO2 = gsap.timeline();
 				AIHERO2
 				.from(".av-hero2-img-text .item-icon-wrap .item-icon", { opacity:0, rotate: "360deg",  scale: .5, duration: 1,  ease: "power1.out" })
@@ -292,200 +368,270 @@ Last change:    00/00/00
 				.from(".av-hero2-img-text .av-hr2-scroll", {  xPercent: 50, rotate: "360deg", duration: 1,  ease: "power1.out" },"< = .4")
 				.from(".av-hero2-img-text .icon-text .item-text", { opacity:0, x: 50,  scale: .5, duration: 1,  ease: "power1.out" },"< = .4 ")
 				
+
+				const AIHERO3 = gsap.timeline();
+				AIHERO3
+				.from(".av-hero3-img .item-img img", { opacity:0, x: 100, scale: 1.5, clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",  duration: 3,  ease: "back.inOut(1.7)" },"<")
+				.from(".av-hero3-text p", { opacity:0, y: 100,  duration: 1,  ease: "back.inOut(1.7)" },"<")
+				.to(".av-hero3-img .item-img img", {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",duration: 3,ease: "back.inOut(1.7)"}, "< - = .5")
+				.from(".av-hero3-text .hr3_btn_grp .av-btn1:nth-child(1)", { opacity:0, x: 100,  duration: 1,  ease: "back.inOut(1.7)" },"< = .4")
+				.from(".av-hero3-text .hr3_btn_grp .av-btn1:nth-child(2)", { opacity:0, x: 100,  duration: 1,  ease: "back.inOut(1.7)" },"< = .2")
+				.from(".av-hero3-img .av-hr2-scroll", { opacity:0, yPercent: -100, rotate: "360deg",  duration: 3,  ease: "back.inOut(1.7)" },"< = .4")
+				.from(".av-hero3-img .item-card-wrap", { opacity:0, yPercent: -100,   duration: 3,  ease: "back.inOut(1.7)" },"<")
+				.from(".av-hr3-card1", { opacity:0, scaleY: 0,   duration: 1, transformOrigin: "top",  ease: "back.inOut(1.7)" },"<")
+				.from(".av-hr3-card2", { opacity:0, scaleY: 0,   duration: 1,transformOrigin: "top",  ease: "back.inOut(1.7)" },"<")
+
+
+
 			}, 700);
-		})		
+})		
+});
+
+
+if ($('.av-spon1-slider').length > 0 ) {
+	var slider = new Swiper('.av-spon1-slider', {
+		spaceBetween: 72,
+		slidesPerView: 6,
+		loop: true,
+		autoplay: {
+			enabled: true,
+			delay: 6000
+		},
+		speed: 400,
+		breakpoints: {
+			'1600': {
+				slidesPerView: 6,
+			},
+			'1200': {
+				slidesPerView: 5,
+				spaceBetween: 40,
+			},
+			'992': {
+				slidesPerView: 4,
+				spaceBetween: 20,
+			},
+			'768': {
+				slidesPerView: 4,
+				spaceBetween: 20,
+			},
+			'576': {
+				slidesPerView: 3,
+				spaceBetween: 20,
+			},
+			'480': {
+				slidesPerView: 2,
+				spaceBetween: 20,
+			},
+			'0': {
+				slidesPerView: 2,
+				spaceBetween: 20,
+			},
+		},
 	});
-	
+};
 
-	if ($('.av-spon1-slider').length > 0 ) {
-		var slider = new Swiper('.av-spon1-slider', {
-			spaceBetween: 72,
-			slidesPerView: 6,
-			loop: true,
-			autoplay: {
-				enabled: true,
-				delay: 6000
-			},
-			speed: 400,
-			breakpoints: {
-				'1600': {
-					slidesPerView: 6,
-				},
-				'1200': {
-					slidesPerView: 5,
-					spaceBetween: 40,
-				},
-				'992': {
-					slidesPerView: 4,
-					spaceBetween: 20,
-				},
-				'768': {
-					slidesPerView: 4,
-					spaceBetween: 20,
-				},
-				'576': {
-					slidesPerView: 3,
-					spaceBetween: 20,
-				},
-				'480': {
-					slidesPerView: 2,
-					spaceBetween: 20,
-				},
-				'0': {
-					slidesPerView: 2,
-					spaceBetween: 20,
-				},
-			},
-		});
-	};
+$('.av-item-active').each(function () {
+	var $wrap = $(this);
+	var $items = $wrap.find('.av-feat1-wrap, .av-hw-item1');
 
-	$('.av-item-active').each(function () {
-		var $wrap = $(this);
-		var $items = $wrap.find('.av-feat1-wrap, .av-hw-item1');
-
-		$items.on('mouseover', function () {
-			$items.removeClass('active');
-			$(this).addClass('active');
-		});
+	$items.on('mouseover', function () {
+		$items.removeClass('active');
+		$(this).addClass('active');
 	});
+});
 
-	if (window.matchMedia("(min-width: 992px)").matches) {
-		let proSroll = gsap.timeline();
-		let otherSections_2 = document.querySelectorAll('.av-pro1-item')
-		otherSections_2.forEach((section, index, i) => {
-			gsap.set(otherSections_2, {
-				scale: 1 
-			});
-			proSroll.to(section, {
-				scrollTrigger: {
-					trigger: section,
-					pin: section,
-					scrub: 1,
-					start: "top 5%",
-					end: "bottom 64%",
-					ease: "none",
-					endTrigger: '.av-pro1-content',
-					pinSpacing: false,
-					markers: false,
-				},
-			})
+if (window.matchMedia("(min-width: 992px)").matches) {
+	let proSroll = gsap.timeline();
+	let otherSections_2 = document.querySelectorAll('.av-pro1-item')
+	otherSections_2.forEach((section, index, i) => {
+		gsap.set(otherSections_2, {
+			scale: 1 
 		});
-	}
-
-
-	if ($('.av-testi1-slider').length > 0 ) {
-		var slider = new Swiper('.av-testi1-slider', {
-			slidesPerView: 3,
-			loop: true,
-			spaceBetween: 32,
-			speed: 1000,
-			navigation: {
-				nextEl: ".av-testi1-next",
-				prevEl: ".av-testi1-prev",
-			},
-			autoplay: {
-				enabled: true,
-				delay: 6000
-			},
-			breakpoints: {
-				'1600': {
-					slidesPerView: 3,
-				},
-				'1400': {
-					slidesPerView: 3,
-				},
-				'992': {
-					slidesPerView: 2,
-				},
-				'768': {
-					slidesPerView: 1,
-				},
-				'576': {
-					slidesPerView: 1,
-				},
-				'0': {
-					slidesPerView: 1,
-				},
-			},
-		});
-	};
-
-
-	gsap.utils.toArray(' .left_view').forEach((el, index) => { 
-		let tlcta = gsap.timeline({
+		proSroll.to(section, {
 			scrollTrigger: {
-				trigger: el,
-				scrub: 1.5,
-				start: "top 70%",
-				end: "top -5%",
-				toggleActions: "play none none reverse",
-				markers: false
-			}
+				trigger: section,
+				pin: section,
+				scrub: 1,
+				start: "top 5%",
+				end: "bottom 64%",
+				ease: "none",
+				endTrigger: '.av-pro1-content',
+				pinSpacing: false,
+				markers: false,
+			},
 		})
-
-		tlcta
-		.set(el, {transformOrigin: 'center center'})
-		.from(el, { opacity: 0, scale: 1, x: "-300"}, {opacity: 1, y: 0, duration: 1, immediateRender: false})
 	});
-	gsap.utils.toArray(' .right_view').forEach((el, index) => { 
-		let tlcta = gsap.timeline({
-			scrollTrigger: {
-				trigger: el,
-				scrub: 1.5,
-				start: "top 70%",
-				end: "top -5%",
-				toggleActions: "play none none reverse",
-				markers: false
-			}
-		})
+}
 
-		tlcta
-		.set(el, {transformOrigin: 'center center'})
-		.from(el, { opacity: 0, scale: 1, x: "300"}, {opacity: 1, y: 0, duration: 1, immediateRender: false})
+
+if ($('.av-testi1-slider').length > 0 ) {
+	var slider = new Swiper('.av-testi1-slider', {
+		slidesPerView: 3,
+		loop: true,
+		spaceBetween: 32,
+		speed: 1000,
+		navigation: {
+			nextEl: ".av-testi1-next",
+			prevEl: ".av-testi1-prev",
+		},
+		autoplay: {
+			enabled: true,
+			delay: 6000
+		},
+		breakpoints: {
+			'1600': {
+				slidesPerView: 3,
+			},
+			'1400': {
+				slidesPerView: 3,
+			},
+			'992': {
+				slidesPerView: 2,
+			},
+			'768': {
+				slidesPerView: 1,
+			},
+			'576': {
+				slidesPerView: 1,
+			},
+			'0': {
+				slidesPerView: 1,
+			},
+		},
 	});
+};
 
 
-	document.querySelectorAll(".av-pro1-item").forEach((projectItem) => {
-		const textEl = projectItem.querySelector(".item-text");
-		projectItem.addEventListener("mousemove", (e) => {
-			const rect = projectItem.getBoundingClientRect();
-			const x = e.clientX - rect.left;
-			const y = e.clientY - rect.top;
-			const moveX = (x / rect.width - 0.05) * 100; 
-			const moveY = (y / rect.height - 0.5) * 100;
+gsap.utils.toArray(' .left_view').forEach((el, index) => { 
+	let tlcta = gsap.timeline({
+		scrollTrigger: {
+			trigger: el,
+			scrub: 1.5,
+			start: "top 70%",
+			end: "top -5%",
+			toggleActions: "play none none reverse",
+			markers: false
+		}
+	})
 
-			gsap.to(textEl, {
-				x: moveX,
-				y: moveY,
-				duration: 4,
-				ease: "power2.out"
-			});
+	tlcta
+	.set(el, {transformOrigin: 'center center'})
+	.from(el, { opacity: 0, scale: 1, x: "-300"}, {opacity: 1, y: 0, duration: 1, immediateRender: false})
+});
+gsap.utils.toArray(' .right_view').forEach((el, index) => { 
+	let tlcta = gsap.timeline({
+		scrollTrigger: {
+			trigger: el,
+			scrub: 1.5,
+			start: "top 70%",
+			end: "top -5%",
+			toggleActions: "play none none reverse",
+			markers: false
+		}
+	})
+
+	tlcta
+	.set(el, {transformOrigin: 'center center'})
+	.from(el, { opacity: 0, scale: 1, x: "300"}, {opacity: 1, y: 0, duration: 1, immediateRender: false})
+});
+
+
+document.querySelectorAll(".av-pro1-item").forEach((projectItem) => {
+	const textEl = projectItem.querySelector(".item-text");
+	projectItem.addEventListener("mousemove", (e) => {
+		const rect = projectItem.getBoundingClientRect();
+		const x = e.clientX - rect.left;
+		const y = e.clientY - rect.top;
+		const moveX = (x / rect.width - 0.05) * 100; 
+		const moveY = (y / rect.height - 0.5) * 100;
+
+		gsap.to(textEl, {
+			x: moveX,
+			y: moveY,
+			duration: 4,
+			ease: "power2.out"
 		});
-		projectItem.addEventListener("mouseleave", () => {
-			gsap.to(textEl, {
-				x: 0,
-				y: 0,
-				duration: 5,
-				ease: "power3.out"
-			});
+	});
+	projectItem.addEventListener("mouseleave", () => {
+		gsap.to(textEl, {
+			x: 0,
+			y: 0,
+			duration: 5,
+			ease: "power3.out"
 		});
 	});
+});
 
 
-	const boxes = gsap.utils.toArray('.txt_item_active');
-	boxes.forEach(svg => {
-		gsap.to(svg, {
-			scrollTrigger: {
-				trigger: svg,
-				start: "top 100%",
-				end: "bottom bottom",
-				toggleClass: "active",
-				duration: 3,
-				delay:1,
-				toggleActions: "play play play reverse",
-				once: true,
-			}
-		});
+const boxes = gsap.utils.toArray('.txt_item_active');
+boxes.forEach(svg => {
+	gsap.to(svg, {
+		scrollTrigger: {
+			trigger: svg,
+			start: "top 100%",
+			end: "bottom bottom",
+			toggleClass: "active",
+			duration: 3,
+			delay:1,
+			toggleActions: "play play play reverse",
+			once: true,
+		}
 	});
+});
+
+
+gsap.utils.toArray(' .item_top').forEach((el, index) => { 
+	let tlcta = gsap.timeline({
+		scrollTrigger: {
+			trigger: el,
+			scrub: 1.5,
+			start: "top 100%",
+			end: "top 130%",
+			toggleActions: "play none none reverse",
+			markers: false
+		}
+	})
+
+	tlcta
+	.set(el, {transformOrigin: 'top'})
+	.from(el, { opacity: 1, scale: 1,  y: 350})
+});
+
+
+gsap.utils.toArray(".img-parallax").forEach(function(container) {
+	let image = container.querySelector("img");
+
+	let tl = gsap.timeline({
+		scrollTrigger: {
+			trigger: container,
+			scrub: true,
+			pin: false,
+
+		},
+	}); 
+	tl.from(image, {
+		yPercent: -30,
+		ease: "none",
+	}).to(image, {
+		yPercent: 30,
+		ease: "none",
+	}); 
+});
+
+
+if ($('.av-testi3-slider').length > 0 ) {
+	var slider = new Swiper('.av-testi3-slider', {
+		spaceBetween: 0,
+		slidesPerView: 1,
+		loop: true,
+		effect: "fade",
+		speed: 400,
+		navigation: {
+			prevEl: ".av-testi3-prev",
+			nextEl: ".av-testi3-next",
+		},
+	});
+};
+
 
 })(jQuery);

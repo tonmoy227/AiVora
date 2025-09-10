@@ -1,7 +1,14 @@
 .av-how-work-sec {
+	z-index: 1;
 	.av-sec-title {
 		margin: 0 auto;
 		max-width: 1000px;
+	}
+	.av-hr3-shape2 {
+		left: 0;
+		right: 0;
+		z-index: -1;
+		text-align: center;
 	}
 }
 .av-how-work-content {

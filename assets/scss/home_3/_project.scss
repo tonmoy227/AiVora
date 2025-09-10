@@ -1,3 +1,7 @@
+.av-project3-area {
+	padding: 100px 0px;
+	border-radius: 32px;
+}
 .av-project3-wrap {
 	margin: 0 auto;
 	max-width: 1465px;
@@ -113,6 +117,13 @@
 		.item-text {
 			&:before {
 				height: 100%;
+			}
+		}
+		.item-arrow {
+			a {
+				&:before {
+					transform: scale(1.0);
+				}
 			}
 		}
 	}

@@ -1,3 +1,13 @@
+.av-hero3-sec {
+	.av-hr3-shape1 {
+		top: -25%;
+		left: -25%;
+	}
+	.av-hr3-shape2 {
+		left: 0;
+		bottom: 0;
+	}
+}
 .av-hero3-content {
 	padding: 24px;
 	gap: 40px 30px;
@@ -40,6 +50,12 @@
 		color: #F0F2F4;
 		font-size: 72px;
 		margin-bottom: 16px;
+		overflow: hidden;
+		span {
+			div {
+				@extend%gradient-text;
+			}
+		}
 		@media #{$xxl} {
 			font-size: 68px;
 		}
@@ -313,6 +329,9 @@
 			color: #fff;
 			max-width: 250px;
 			font-size: 32px;
+			&:hover {
+				letter-spacing: 1px;
+			}
 		}
 		.item-img {
 			z-index: -1;
@@ -326,6 +345,9 @@
 			font-size: 20px;
 			font-weight: 500;
 			position: absolute;
+			&:hover {
+				letter-spacing: 2px;
+			}
 		}
 	}
 	&:is(.type_two) {
@@ -358,6 +380,15 @@
 				top: -30%;
 				right: -20%;
 				z-index: -1;
+			}
+		}
+	}
+	&:hover {
+		.item-arrow {
+			a {
+				&:before {
+					transform: scale(1.0);
+				}
 			}
 		}
 	}

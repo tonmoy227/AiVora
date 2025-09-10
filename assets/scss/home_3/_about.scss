@@ -1,4 +1,21 @@
-
+@keyframes ring {
+	0% { transform: rotate(0); }
+	10% { transform: rotate(15deg); }
+	20% { transform: rotate(-15deg); }
+	30% { transform: rotate(10deg); }
+	40% { transform: rotate(-10deg); }
+	50% { transform: rotate(5deg); }
+	60% { transform: rotate(-5deg); }
+	70% { transform: rotate(2deg); }
+	80% { transform: rotate(-2deg); }
+	100% { transform: rotate(0); }
+}
+.av-ab3-sec {
+	.av-hr3-shape1 {
+		bottom: -25%;
+		right: -25%;
+	}
+}
 .ab-ab3-wrapper {
 	z-index: 1;
 	margin: 0 auto;
@@ -53,6 +70,10 @@
 		border-radius: 100%;
 		border: 1px solid transparent;
 		background: linear-gradient(var(--av-black1), var(--av-black1)) padding-box, var(--av-prime-c1) border-box;
+		img {
+			transform-origin: center;
+			animation: ring 1s infinite;
+		}
 	}
 	.item-text {
 		span {

@@ -141,4 +141,8 @@
 }
 .av-blog3-content {
 	gap: 40px;
+	@media #{$lg,$md,$sm,$xs,$xxs} {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
 }
